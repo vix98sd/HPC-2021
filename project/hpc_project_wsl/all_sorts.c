@@ -5,7 +5,7 @@
 #include<string.h>
 
 #define NUMBER_OF_THREADS 8
-#define ARRAY_MAX_SIZE 500000
+#define ARRAY_MAX_SIZE 5000
 
 int quick_arr[ARRAY_MAX_SIZE];
 int quick_arr_sq[ARRAY_MAX_SIZE];
@@ -49,11 +49,11 @@ void quickSort(int arr[], int low, int high){
 	if (low < high)
 	{
 		int pi = partition(arr, low, high);
-		#pragma omp task firstprivate(arr,low,pi)
+		#pragma omp task firstprivate(arr, low, pi)
 		{
 			quickSort(arr,low, pi - 1);
 		}
-		#pragma omp task firstprivate(arr, high,pi)
+		#pragma omp task firstprivate(arr, high, pi)
 		{
 			quickSort(arr, pi + 1, high);
 		}
@@ -63,8 +63,6 @@ void quickSort(int arr[], int low, int high){
 void run_quick_parallel(int quick_arr[], int n){
     #pragma omp parallel
     {
-        int id = omp_get_thread_num();
-        int nthrds = omp_get_num_threads();
         #pragma omp single nowait
         quickSort(quick_arr, 0, n-1);
     }
@@ -179,19 +177,21 @@ int main()
 
     // ------------------------------   QUICK SORT < 500k   ------------------------------
 
-    start_time = omp_get_wtime();
-    run_quick_parallel(quick_arr, n);
-	run_time = omp_get_wtime() - start_time;
-	printf("Quick sort parallel execution time in seconds: %lf\n", run_time);
-	// printf("Sorted array: \n");
-	// printArray(quick_arr, n);
+    if(ARRAY_MAX_SIZE <= 500000){
+        start_time = omp_get_wtime();
+        run_quick_parallel(quick_arr, n);
+        run_time = omp_get_wtime() - start_time;
+        printf("Quick sort parallel execution time in seconds: %lf\n", run_time);
+        // printf("Sorted array: \n");
+        // printArray(quick_arr, n);
 
-    start_time = omp_get_wtime();
-	run_quick_sequential(quick_arr_sq, n);
-	run_time = omp_get_wtime() - start_time;
-	printf("Quick sort sequential execution time in seconds: %lf\n", run_time);
-	// printf("Sorted array: \n");
-	// printArray(quick_arr_sq, n);
+        start_time = omp_get_wtime();
+        run_quick_sequential(quick_arr_sq, n);
+        run_time = omp_get_wtime() - start_time;
+        printf("Quick sort sequential execution time in seconds: %lf\n", run_time);
+        // printf("Sorted array: \n");
+        // printArray(quick_arr_sq, n);
+    }
 
     // ------------------------------   MERGE SORT   ------------------------------
 
@@ -210,6 +210,7 @@ int main()
 	// printArray(merge_arr_sq, n);
 
     // ------------------------------   COUNTING SORT < 50k  ------------------------------
+    
     if(ARRAY_MAX_SIZE <= 50000){
         start_time = omp_get_wtime();
         run_counting_parallel(counting_arr, counting_arr_sorted, n);
@@ -225,19 +226,6 @@ int main()
         // printf("Sorted array: \n");
         // printArray(counting_arr_sq_sorted, n);
     }
-
-    // int x = 1;
-    // for(int i = 0; i < n; i++){
-    //     if(quick_arr[i] != counting_arr_sorted[i]){
-    //         x = 0;
-    //         break;
-    //     }
-    // }
-    // if(x){
-    //     printf("same\n");
-    // }else{
-    //     printf("not same\n");
-    // }
 
 	return 0;
 }
