@@ -1,1 +1,2 @@
+Tema: Komparativna analiza algoritama za sortiranje
 gcc [name].c -o [name] -fopenmp

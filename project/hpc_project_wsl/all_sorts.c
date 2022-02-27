@@ -5,7 +5,7 @@
 #include<string.h>
 
 #define NUMBER_OF_THREADS 8
-#define ARRAY_MAX_SIZE 5000
+#define ARRAY_MAX_SIZE 500000
 
 int quick_arr[ARRAY_MAX_SIZE];
 int quick_arr_sq[ARRAY_MAX_SIZE];
@@ -210,7 +210,7 @@ int main()
 	// printArray(merge_arr_sq, n);
 
     // ------------------------------   COUNTING SORT < 50k  ------------------------------
-    
+
     if(ARRAY_MAX_SIZE <= 50000){
         start_time = omp_get_wtime();
         run_counting_parallel(counting_arr, counting_arr_sorted, n);
