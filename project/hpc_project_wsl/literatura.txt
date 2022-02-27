@@ -1,0 +1,10 @@
+https://en.wikipedia.org/wiki/Sorting_algorithm
+https://sortvisualizer.com/
+https://www.programiz.com/dsa/asymptotic-notations
+https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms/
+https://www.hp.com/us-en/shop/tech-takes/parallel-computing-and-its-modern-uses
+https://www.dcc.fc.up.pt/~ricroc/aulas/1516/cp/apontamentos/slides_sorting.pdf
+https://www.geeksforgeeks.org/divide-and-conquer-algorithm-introduction/
+https://www.geeksforgeeks.org/quick-sort/
+https://www.geeksforgeeks.org/merge-sort/
+https://www.geeksforgeeks.org/counting-sort/

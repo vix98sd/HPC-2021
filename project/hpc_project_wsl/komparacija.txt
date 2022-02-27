@@ -35,18 +35,29 @@ Quick sort parallel execution time in seconds: 16.208704
 Quick sort sequential execution time in seconds: 59.908868
 Merge sort parallel execution time in seconds: 0.136919
 Merge sort sequential execution time in seconds: 0.266140
-Counting sort parallel execution time in seconds: Prekinuto nakon 7 minuta
-Counting sort sequential execution time in seconds: Nije isprobano
+Prekinuto nakon 7 minuta
+Nije isprobano
 
 Sorts with array of 1000000 elements: 
 Quick sort parallel execution time in seconds: 63.001017
 Segmentation fault
 Merge sort parallel execution time in seconds: 0.257721
 Merge sort sequential execution time in seconds: 0.531599
+Nije isprobano
+Nije isprobano
 
-Sorts with array of 2000000 elements: 
+Sorts with array of 2000000 elements:
+Nije isprobano
+Nije isprobano
 Merge sort parallel execution time in seconds: 0.589470
 Merge sort sequential execution time in seconds: 1.103728
+Nije isprobano
+Nije isprobano
 
-Sorts with array of 2500000+ elements: 
+Sorts with array of 2500000+ elements:
+Nije isprobano
+Nije isprobano
 Segmentation fault
+Segmentation fault
+Nije isprobano
+Nije isprobano
